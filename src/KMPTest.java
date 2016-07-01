@@ -12,10 +12,10 @@
 public class KMPTest {
     public static void main(String[] args) {
         String s = "abbabbbbcab"; // 主串
-        String t = "bbcab"; // 模式串
+        String t = "ABCDABD"; // 模式串
         char[] ss = s.toCharArray();
         char[] tt = t.toCharArray();
-        System.out.println(KMP_Index(ss, tt)); // KMP匹配字符串
+        System.out.println("匹配到主串的索引:"+KMP_Index(ss, tt)); // KMP匹配字符串
     }
 
     /**
@@ -35,13 +35,17 @@ public class KMPTest {
                 j++;
                 if (t[i] != t[j]) {
                     next[i] = j;
+                    System.out.println("next[" + i + "]=" + next[i]);
                 } else {
                     next[i] = next[j];
+                    System.out.println("next[" + i + "]=" + next[i]);
                 }
             } else {
                 j = next[j];
+                System.out.println("                j=> " + j + " i=> "+ i);
             }
         }
+
         return next;
     }
 
